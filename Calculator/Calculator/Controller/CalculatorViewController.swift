@@ -14,6 +14,15 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var calculatorItemsStackView: UIStackView!
     @IBOutlet weak var calculatorItemsScrollView: UIScrollView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let scrollViewWidth = calculatorItemsScrollView.bounds.width
+            calculatorItemsScrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: .zero,
+                                                                                   left: .zero,
+                                                                                   bottom: .zero,
+                                                                                   right: scrollViewWidth - 9)
+    }
+    
     private func addStackViewLabel() {
         guard var operandLabelText = operandLabel.text,
               let operatorLabelText = operatorLabel.text else { return }
